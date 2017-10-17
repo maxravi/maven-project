@@ -16,10 +16,36 @@
 
 		<mule.version>3.9.0</mule.version>
 		<mule.tools.version>1.2</mule.tools.version>
+		<uid>bluebelt911</uid>
+		<pwd></pwd>
 	</properties>
 
 	<build>
 		<plugins>
+		<plugin>
+	<groupId>org.mule.tools.maven</groupId>
+	<artifactId>mule-maven-plugin</artifactId>
+	<version>2.2.1</version>
+	<configuration>
+		<deploymentType>cloudhub</deploymentType>
+		<muleVersion>3.8.5</muleVersion>
+		<username>${uid}</username>
+		<password>${pwd}</password>
+		<workerType>Micro</workerType>
+		<redeploy>true</redeploy>
+		<environment>Sandbox</environment>
+	</configuration>
+	<executions>
+		<execution>
+			<id>deploy</id>
+			<phase>deploy</phase>
+			<goals>
+				<goal>deploy</goal>
+			</goals>
+		</execution>
+	</executions>
+</plugin>
+		
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-app-maven-plugin</artifactId>
